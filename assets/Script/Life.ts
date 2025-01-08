@@ -34,10 +34,10 @@ class LifeManager {
     async initial() {
         
         const [age, talents, events, achievements] = await Promise.all([
-            ConfigManager.readJson('age'),
-            ConfigManager.readJson('talents'),
-            ConfigManager.readJson('events'),
-            ConfigManager.readJson('achievement'),
+            ConfigManager.readJson('age'), // 年龄JSON
+            ConfigManager.readJson('talents'), // 天赋JSON
+            ConfigManager.readJson('events'), // 事件JSON
+            ConfigManager.readJson('achievement'), // 成就JSON
         ])
         this._property.initial({age});
         this._talent.initial({talents});
