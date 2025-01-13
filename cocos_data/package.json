@@ -1,0 +1,12 @@
+{
+    "name": "life_restart",
+    "type": "module",
+    "version": "2.0.0",
+    "scripts": {
+        "xlsxTransform": "vt transform data",
+        "xlsx2json": "vt transform -s 4 -d public data/**/*.xlsx"
+    },
+    "dependencies": {
+        "v-transform": "^2.0.2"
+    }
+}
