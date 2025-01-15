@@ -11,7 +11,7 @@ export class PropItem extends Component {
 
     start () {
         // [3]
-    }
+    }   
 
     public setData(name: string, value: number) {
         this.nameLbl.string = name;

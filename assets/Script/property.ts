@@ -83,6 +83,7 @@ class Property {
 
             talent = talent.map(v=>Number(v));
 
+            // 年龄数据，
             age[a] = { event, talent };
         }
     }
@@ -177,8 +178,7 @@ class Property {
                 return Math.floor(sum(HCHR, HINT, HSTR, HMNY, HSPR)*2 + HAGE/2);
             case this.TYPES.TMS:
                 return this.lsget('times') || 0;
-            case this.TYPES.EXT:
-                return this.lsget('extendTalent') || null;
+            case this.TYPES.EXT:                return this.lsget('extendTalent') || null;
             case this.TYPES.ATLT:
             case this.TYPES.AEVT:
             case this.TYPES.ACHV:

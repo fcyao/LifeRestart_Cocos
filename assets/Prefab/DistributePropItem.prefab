@@ -205,7 +205,7 @@
   {
     "__type__": "cc.Node",
     "_name": "NameBG",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 1
     },
@@ -427,9 +427,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 117,
-      "g": 117,
-      "b": 117,
+      "r": 151,
+      "g": 21,
+      "b": 21,
       "a": 255
     },
     "_spriteFrame": {

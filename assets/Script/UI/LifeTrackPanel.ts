@@ -1,4 +1,3 @@
-
 import { _decorator, Component, Node, Prefab, instantiate, UITransform, Vec3, ScrollView, Button, Label, Color } from 'cc';
 import { PropNameMap } from '../Defines';
 import { ITrackData, lifeMgr } from '../Life';
@@ -80,17 +79,32 @@ export class LifeTrackPanel extends UIPanel {
     // update (deltaTime: number) {
     //     // [4]
     // }
-
+    /**
+     * 创建生命轨迹项
+     * 该函数用于创建一个新的生命轨迹项，并将其添加到生命轨迹组中。
+     * 然后设置轨迹项的位置和线条长度，并更新当前最大高度和内容的UI变换高度。
+     * @param age - 生命轨迹的年龄。
+     * @param description - 生命轨迹的描述。
+     */
     public createLifeTrack(age:string, description: string) {
+        // 实例化生命轨迹项预制体
         const itemNode = instantiate(this.lifeTrackItemPrfb);
+        // 将实例化的节点设置为生命轨迹组的子节点
         itemNode.setParent(this.lifeTrackGroup);
+        // 获取生命轨迹项组件
         const item = itemNode.getComponent(LifeTrackItem);
+        // 设置生命轨迹项的数据
         item.setData(age, description);
+        // 获取生命轨迹项的高度
         const itemHeight = item.getHeight();
+        // 设置生命轨迹项的位置
         itemNode.setPosition(new Vec3(0, this._curMaxHeight, 0));
+        // 设置生命轨迹项的线条长度
         item.setLineLength(itemHeight + this._spacing);
 
+        // 更新当前最大高度
         this._curMaxHeight -= itemHeight + this._spacing;
+        // 更新内容的UI变换高度
         this._contentUITrans.height = -this._curMaxHeight;
     }
 
@@ -125,7 +139,7 @@ export class LifeTrackPanel extends UIPanel {
 
     protected onShow(selectedTalentList: ITalentInfo[], propData) {
         this._isEnd = false;
-        this._isAutoPlay = false;
+        this._isAutoPlay = true;
         this._curMaxHeight = 0;
 
         // bug:start不执行，先放这里
@@ -201,10 +215,10 @@ export class LifeTrackPanel extends UIPanel {
                     case 'TLT':
                         return `天赋【${name}】发动：${description}`;
                     case 'EVT':
-                        return description + (postEvent?`<br/>${postEvent}`:'');
+                        return description + (postEvent?`\n${postEvent}`:'');
                 }
             }
-        ).join('<br/>');
+        ).join('\n');
         
         this.createLifeTrack(`${track.age}岁 `, contentText)
     }

@@ -87,10 +87,19 @@ export class StartMenuPanel extends UIPanel {
         });
     }
 
+    /**
+     * 每帧更新函数
+     * 该函数在每一帧被调用，用于更新游戏对象的状态。
+     * 如果 `_isAutoRotY` 为 `true`，则根据 `deltaTime` 计算旋转角度，并调用 `rotateItems` 方法旋转标签项。
+     * @param deltaTime - 自上一帧以来的时间间隔，单位为秒。
+     */
     update (deltaTime: number) {
         // [4]
+        // 检查是否启用自动旋转
         if (this._isAutoRotY) {
+            // 根据时间间隔计算旋转角度
             this._angleY = deltaTime * oneRadian * 5;
+            // 调用 rotateItems 方法旋转标签项
             this.rotateItems();
         }
     }
